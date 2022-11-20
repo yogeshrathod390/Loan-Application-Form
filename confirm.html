@@ -6,42 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>confirm Page</title>
     <link href="ConfirmStyle.css" rel="stylesheet">
+    
 </head>
+    
 <body>
+    
     <div class="container1">
+        
  <p>
+     
 Dear
-<span id="name1"></span>,<br><br><br>
-Thank You for your inquiry. A4 digit verification number has been sent to your emai:
-<span id="email"></span>
+     
+<span id="name1"></span>,  <br><br><br>
+     
+Thank You for your inquiry. A4 digit verification number has been sent to your emai:    
+<span id="email"></span>  
 .Please Inter it in the following box and submit for confirmation: <span class="Hint">(Check OTP in console)</span><br><br>
-<input type="text" name="otp" id="otp"/> <br>
-<h5 id="validate">validate</h5><br><br>
+<input type="text" name="otp" id="otp"/>  <br>
+<h5 id="validate">validate</h5>  <br><br>
 <button onclick="varify()" class="button">Varify</button>
-
+        
  </p>
 
     </div>
+    
     <script>
+        
         let name = document.getElementById("name1");
         let email = document.getElementById("email");
         let otp = document.getElementById("otp");
         let validate = document.getElementById("validate");
+        
         let pin;
         let generate = () => {
             pin = parseInt(Math.random()*(9999 - 1000) + 1000);
         }
+        
         window.onload = () => {
+            
             generate();
+            
             console.log("OTP: ", pin)
+            
             var data = localStorage.getItem("inputData");
+            
             if (data != null){
+                
                 array1 = JSON.parse(data);
+                
                 let{name: N, email: E} = array1[0]
 
                 //console.log(N,E);
                 name.innerHTML = N;
                 email.innerHTML = E;
+                
             }
 
         }
