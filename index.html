@@ -272,7 +272,7 @@
         function validPan() {
             //create a variable for Loan amount
             var pan = document.getElementById("pan").value
-            var requiredPan = /^([a-zA-Z]{5})([0-9]{3})([a-zA-Z]{1})$/
+            var requiredPan = /^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$/
             if (pan.search(requiredPan) == -1) {                             //  this  condition is executed,if the condition is true 
                 console.log("put a valid PAN number")
                 alert("Invalid PAN number")
