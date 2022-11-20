@@ -12,41 +12,53 @@
 </head>
 
 <body>
+    
     <div class="container">
 
         <h1 class="h1">LOAN APPLICATION</h1>
 
         <div class="box">
+            
             <!--validation is used for called-->
             <form name="form" action="#" onsubmit="event.preventDefault();validation(); ">
 
                 <label>Name :</label> <br>
                 <!--check function is used for called-->
                 <input for="name" type="text" onchange="check()" id="name" autocomplete="off" required />
+                
                 <br><br>
+                
                 <label>Email :</label> <br>
                 <!--validToWard function is used for called-->
                 <input name="email" type="email" onchange="validEmail()" placeholder="example@gmail.com" id="email"
                     value="" autocomplete="off" required />
+                
                 <br><br>
+                
                 <label for="lone">Lone Amount:<br />
                     <input type="number" placeholder="9865" required id="loan" name="loan" pattern="[0-9]*$"
                         title="Formmat : 988765" onchange="convertToWords()" />
-                    <!--convertToWords function is used for called-->
-                </label>
+                    <!--convertToWords function is used for called-->       
+                 </label>
+                
                 <br>
+                
                 <span id="printword"></span>
 
                 <br><br>
+                
                 <label>PAN Number :</label> <br>
                 <!--validPan function is used for called-->
                 <input type="text" onchange="validPan()" title="ABCDE1234F" autocomplete="off" id="pan" required />
+                
                 <br><br>
 
                 <button class="btn" type="submit">SUBMIT</button>
 
         </div>
+            
         </form>
+        
     </div>
 
     <script>
@@ -58,6 +70,7 @@
 
         //creating empty array for store input data
         var addName = new Array();
+        
         // this function is calling 
         function validation() {
             //   e.preventDefault();
@@ -75,6 +88,7 @@
 
                 }
             );
+            
             //localStorage.setitem method it is used to save key/value pair in the browser.  
             //JSON.stringify method is used to convert a javaScript value to a string 
             localStorage.setItem("inputData", JSON.stringify(addName));
@@ -93,25 +107,37 @@
                 .value
                 .split(" ").filter(word => word.trim().length > 0);
             console.log("you enter", name.value, array, array.length);
+            
             //condition 1
             if (array.length >= 2) {                   //  this  condition is executed,if the condition is true 
+                
                 for (let i = 0; i < array.length; i++) {
+                    
                     //condition 2
                     if (array[i].length >= 4 && array[i].length <= 40) {        //  this  condition is executed,if the condition is true 
+                        
                         console.log(array[i], array[i].length, ": this is correct ");
+                        
                         name.style.border = "none";
+                        
                         name.style.borderBottom = "2px solid black";
 
                     } else {                                      //this function is excuted if the first condition2 is false
+                        
                         console.log(" Name , each word shoud be min 4 char ");
+                        
                         alert(`In Name " ${array[i]} " shoud be min 4 char`)
+                        
                         name.style.border = "2px solid red";
 
                     }
                 }
             } else {                              //  this  condition is executed,if the condition1  is false 
+                
                 alert("Name min 2 words");
+                
                 console.log("Enter min 2 words");
+                
                 name.style.border = "2px solid red";
 
             }
@@ -123,16 +149,24 @@
 
         // this function is calling 
         function validEmail() {
+            
             // create a variable for email
             var emailid = document.getElementById("email").value
+            
             if (emailid.indexOf("@") <= 0) {              //  this  condition is executed,if the condition is true 
+                
                 console.log("invalid @ position");
+                
                 alert(`invalid @ position`)
+                
                 return false;
-            } if ((emailid.charAt(emailid.length - 4) != ".") && (emailid.charAt(emailid.length - 3) != ".")) {       //  this  condition is executed,if the condition is true 
+            } if ((emailid.charAt(emailid.length - 4) != ".") && (emailid.charAt(emailid.length - 3) != ".")) {       //  this  condition is executed,if the condition is true
+                
 
                 console.log("invalid position at 4");
+                
                 alert("invalid email address ")
+                
                 return false;
             }
 
@@ -183,13 +217,17 @@
             var str = "";
             // if n is more than 19, divide it
             if (n > 19) {
+                
                 str += ten[parseInt(n / 10)] + one[n % 10];
+                
             } else {
+                
                 str += one[n];
             }
 
             // if n is non-zero
             if (n != 0) {
+                
                 str += s;
             }
 
@@ -198,8 +236,10 @@
         // this function is calling 
         // Function to print a given number in words
         function convertToWords() {
+            
             //create a variable for Loan amount
             var num = document.getElementById("loan").value
+            
             // stores word representation of given number n
             var out = "";
 
